@@ -1,5 +1,22 @@
 # God Crypto
 
+Forked from [God Crypto](https://deno.land/x/god_crypto@v1.4.10).
+
+I only want fix the typescript lint error which caused in `https://deno.land/x/god_crypto@v1.4.10/src/aes/aes_wc.ts#L25`.
+
+```
+error: TS2345 [ERROR]: Argument of type '"jwk"' is not assignable to parameter of type '"raw"'.
+        "jwk",
+        ~~~~~
+```
+
+It seems like that the lint rule changed when typescript version update.
+
+I just changed it because I have to use it now. I will not maintenance code if the origin code fixed it.
+
+---
+
+
 <img src="https://repository-images.githubusercontent.com/285578879/a09a9880-e179-11ea-9b30-42d45ee638c1" width="500px">
 
 ![test](https://github.com/invisal/god-crypto/workflows/test//badge.svg)
@@ -40,17 +57,17 @@ Click here for complete document: [Complete Documents](https://github.com/invisa
 
 ## Modules
 
-You can choose to include the whole `god_crypto` implementation or just include module that you need.
+You can choose to include the whole `god_crypto_jw` implementation or just include module that you need.
 
 ```
 // Load everything
-import { AES, RSA, TOTP, hmac, encode } from "https://deno.land/x/god_crypto/mod.ts";
+import { AES, RSA, TOTP, hmac, encode } from "https://deno.land/x/god_crypto_jw/mod.ts";
 
 // Load what you need
-import { AES }  from "https://deno.land/x/god_crypto/aes.ts";
-import { RSA }  from "https://deno.land/x/god_crypto/rsa.ts";
-import { TOTP } from "https://deno.land/x/god_crypto/otp.ts";
-import { hmac } from "https://deno.land/x/god_crypto/hmac.ts";
+import { AES }  from "https://deno.land/x/god_crypto_jw/aes.ts";
+import { RSA }  from "https://deno.land/x/god_crypto_jw/rsa.ts";
+import { TOTP } from "https://deno.land/x/god_crypto_jw/otp.ts";
+import { hmac } from "https://deno.land/x/god_crypto_jw/hmac.ts";
 ```
 
 ---
@@ -58,7 +75,7 @@ import { hmac } from "https://deno.land/x/god_crypto/hmac.ts";
 ## Examples
 
 ```typescript
-import { AES } from "https://deno.land/x/god_crypto/aes.ts";
+import { AES } from "https://deno.land/x/god_crypto_jw/aes.ts";
 
 const aes = new AES("Hello World AES!", {
   mode: "cbc",
@@ -74,7 +91,7 @@ console.log(plain.toString());
 ```
 
 ```typescript
-import { RSA } from "https://deno.land/x/god_crypto/rsa.ts";
+import { RSA } from "https://deno.land/x/god_crypto_jw/rsa.ts";
 
 // Parsing public/private key
 const publicKey = RSA.parseKey(Deno.readTextFileSync("./public.pem"));
