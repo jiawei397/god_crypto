@@ -20,8 +20,7 @@ export class WebCryptoAES implements AESBase {
 
   protected async loadKey() {
     if (this.wkey === null) {
-      // @ts-ignore
-      this.wkey = await crypto.subtle.importKey(
+      this.wkey = await crypto.subtle.importKey( // @ts-ignore
         "jwk",
         { kty: "oct", k: base64(this.key) },
         "AES-CBC",
